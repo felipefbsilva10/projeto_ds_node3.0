@@ -2,7 +2,18 @@ const db = require("../config/database");
 
 const criarUsuario = async (
     
-    nome, email, telefone, cep, endereco, numero, complemento, bairro, cidade, estado, login, senha
+    nome,
+    email,
+    telefone,
+    cep,
+    endereco,
+    numero,
+    complemento,
+    bairro,
+    cidade,
+    estado,
+     login,
+    senha
     
 ) => {
     
@@ -10,7 +21,18 @@ const criarUsuario = async (
     
         INSERT INTO usuarios (
         
-            nome, email, telefone, cep, endereco, numero, complemento, bairro, cidade, estado, login, senha
+            nome,
+            email,
+            telefone,
+            cep,
+            endereco,
+            numero,
+            complemento,
+            bairro,
+            cidade,
+            estado,
+            login,
+            senha
             
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         
@@ -19,11 +41,22 @@ const criarUsuario = async (
     
     const [resultado] = await db.execute(sql, [
         
-        nome, email, telefone, cep, endereco, numero, complemento, bairro, cidade, estado, login, senha
+        nome,
+        email,
+        telefone,
+        cep,
+        endereco,
+        numero,
+        complemento,
+        bairro,
+        cidade,
+        estado,
+        login,
+        senha
         
     ]);
     
-    return resultado; // Correção: o return estava fora do escopo da função
+    return resultado;
     
 };
 
@@ -33,7 +66,18 @@ const buscarUsuarios = async () => {
     
     const sql = `
     
-        SELECT id_usuario, nome, email, telefone, cep, endereco, numero, complemento, bairro, cidade, estado, login 
+        SELECT
+        id_usuario,
+        nome, email,
+        telefone,
+        cep,
+        endereco,
+        numero,
+        complemento,
+        bairro,
+        cidade,
+        estado,
+        login 
         FROM usuarios
         
     `;
@@ -47,7 +91,11 @@ const buscarUsuarios = async () => {
 const buscarPorLogin = async (login) => {
     
     
-    const sql = `SELECT * FROM usuarios WHERE login = ?`;
+    const sql = `
+    SELECT *
+    FROM usuarios
+    WHERE login = ?
+    `;
     
     const [usuarios] = await db.execute(sql, [login]);
     
